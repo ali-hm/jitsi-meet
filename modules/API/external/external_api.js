@@ -161,7 +161,8 @@ function parseArguments(args) {
             configOverwrite,
             interfaceConfigOverwrite,
             jwt,
-            onload
+            onload,
+            lang
         ] = args;
 
         return {
@@ -172,7 +173,8 @@ function parseArguments(args) {
             configOverwrite,
             interfaceConfigOverwrite,
             jwt,
-            onload
+            onload,
+            lang
         };
     }
     case 'object': // new arguments format
@@ -258,7 +260,8 @@ export default class JitsiMeetExternalAPI extends EventEmitter {
             invitees,
             devices,
             userInfo,
-            e2eeKey
+            e2eeKey,
+            lang='en'
         } = parseArguments(args);
         const localStorageContent = jitsiLocalStorage.getItem('jitsiLocalStorage');
 
@@ -272,7 +275,8 @@ export default class JitsiMeetExternalAPI extends EventEmitter {
             userInfo,
             appData: {
                 localStorageContent
-            }
+            },
+            lang
         });
         this._createIFrame(height, width, onload);
         this._transport = new Transport({
