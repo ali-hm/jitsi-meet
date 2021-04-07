@@ -7,4 +7,5 @@ open https://127.0.0.1:8080/ in browser
 
 # to package build as a tar.bz2 file this command will create a jitsi-meet.tar.bz2 file
 # run it after successful build or it will not have all required files
+
 make source-package

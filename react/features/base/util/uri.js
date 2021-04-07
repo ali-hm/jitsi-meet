@@ -531,7 +531,12 @@ export function urlObjectToString(o: Object): ?string {
     url.pathname = pathname;
 
     // query/search
-
+    if(o.lang){
+        let {search2} = url;
+        if(!search2) search2 = '';
+        search2+='?lang=' + o.lang;
+        url.search = search2;
+    }
     // Web's ExternalAPI jwt
     const { jwt } = o;
 
@@ -551,7 +556,7 @@ export function urlObjectToString(o: Object): ?string {
 
     let { hash } = url;
 
-    for (const urlPrefix of [ 'config', 'interfaceConfig', 'devices', 'userInfo', 'appData', 'lang' ]) {
+    for (const urlPrefix of [ 'config', 'interfaceConfig', 'devices', 'userInfo', 'appData']) {
         const urlParamsArray
             = _objectToURLParamsArray(
                 o[`${urlPrefix}Overwrite`]
@@ -570,7 +575,7 @@ export function urlObjectToString(o: Object): ?string {
             hash += urlParamsString;
         }
     }
-
+    
     url.hash = hash;
 
     return url.toString() || undefined;

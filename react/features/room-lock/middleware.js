@@ -51,15 +51,15 @@ MiddlewareRegistry.register(store => next => action => {
         const currentLockedState = store.getState()['features/base/conference'].locked;
 
         if (currentLockedState === LOCKED_REMOTELY) {
-            store.dispatch(
+            /*store.dispatch(
                 showNotification({
                     titleKey: 'notify.passwordSetRemotely'
-                }, NOTIFICATION_TIMEOUT));
+                }, NOTIFICATION_TIMEOUT));*/
         } else if (previousLockedState === LOCKED_REMOTELY && !currentLockedState) {
-            store.dispatch(
+            /*store.dispatch(
                 showNotification({
                     titleKey: 'notify.passwordRemovedRemotely'
-                }, NOTIFICATION_TIMEOUT));
+                }, NOTIFICATION_TIMEOUT));*/
         }
 
         return result;
